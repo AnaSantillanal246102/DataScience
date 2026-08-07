@@ -1,0 +1,90 @@
+Functions
+Functions are the primary and most important method of code organization and reuse in Python. As a rule of thumb, if you anticipate needing to repeat the same or very similar code more than once, it may be worth writing a reusable function.
+
+#Functions Are Objects
+
+Namespaces, Scope, and Local Functions
+Functions can access variables created inside the function as well as those outside the function in higher (or even global) scopes. An alternative and more descriptive name describing a variable scope in Python is a namespace. Any variables that are assigned within a function by default are assigned to the local namespace. The local namespace is created when the function is called and is immediately populated by the function’s arguments. After the function is finished, the local namespace is destroyed (with some exceptions that are outside the purview of this chapter).
+
+    - Assigning variables outside of the function's scope is possible, but those variables must be declared explicitly using either the global or nonlocal keywords
+    -nonlocal allows a function to modify variables defined in a higher-level scope that is not global
+(global - nonlocal - local)
+
+#otherlibraries
+re
+One way to do this is to use built-in string methods along with the *re* standard library module for regular expressions
+
+itertools module
+The standard library itertools module has a collection of generators for many common data algorithms. For example, groupby takes any sequence and a function, grouping consecutive elements in the sequence by return value of the function.
+        In [220]: import itertools
+        
+        In [221]: def first_letter(x):
+           .....:     return x[0]
+        
+        In [222]: names = ["Alan", "Adam", "Wes", "Will", "Albert", "Steven"]
+        
+        In [223]: for letter, names in itertools.groupby(names, first_letter):
+           .....:     print(letter, list(names)) # names is a generator
+        A ['Alan', 'Adam']
+        W ['Wes', 'Will']
+        A ['Albert']
+        S ['Steven']
+sys
+    In [245]: import sys
+    In [246]: sys.getdefaultencoding()
+    Out[246]: 'utf-8'
+To get consistent behavior across platforms, it is best to pass an encoding (such as encoding="utf-8", which is widely used) when opening files
+
+Anonymous (Lambda) Functions
+Python has support for so-called anonymous or lambda functions, which are a way of writing functions consisting of a single statement, the result of which is the return value. They are defined with the lambda keyword, which has no meaning other than “we are declaring an anonymous function”
+It’s often less typing (and clearer) to pass a lambda function as opposed to writing a full-out function declaration or even assigning the lambda function to a local variable.
+        a=[1,2,3]
+        def sumdob(x,y):
+            return [y(x) for x in a]
+        sumdob(a,lambda x:x*2)
+Generators
+Many objects in Python support iteration, such as over objects in a list or lines in a file. This is accomplished by means of the iterator protocol, a generic way to make objects iterable.
+        some_dict = {"a": 1, "b": 2, "c": 3}
+        dict_iterator = iter(some_dict)
+        dict_iterator
+        <dict_keyiterator at 0x251a9b48900>
+        list(dict_iterator)
+An iterator is any object that will yield objects to the Python interpreter when used in a context like a for loop. Most methods expecting a list or list-like object will also accept any iterable object. This includes built-in methods such as min, max, and sum, and type constructors like list and tuple
+
+Whereas normal functions execute and return a single result at a time, generators can return a sequence of multiple values by pausing and resuming execution each time the generator is used. To create a generator, use the yield keyword instead of return in a function
+
+Generator expressions
+Another way to make a generator is by using a generator expression. This is a generator analogue to list, dictionary, and set comprehensions. To create one, enclose what would otherwise be a list comprehension within parentheses instead of brackets
+
+Errors and Exception Handling
+(TypeError, ValueError)
+You can control the amount of context shown using the %xmode magic command, from Plain (same as the standard Python interpreter) to Verbose (which inlines function argument values and more).
+
+Sequence Functions
+#enumerate
+It’s common when iterating over a sequence to want to keep track of the index of the current item, which returns a sequence of (i, value) tuples
+
+#sorted
+The sorted function returns a new sorted list from the elements of any sequence
+
+#zip
+zip “pairs” up the elements of a number of lists, tuples, or other sequences to create a list of tuples.
+zip can take an arbitrary number of sequences, and the number of elements it produces is determined by the shortest sequence
+
+#reversed
+reversed iterates over the elements of a sequence in reverse order
+reversed is a generator (to be discussed in some more detail later), so it does not create the reversed sequence until materialized (e.g., with list or a for loop)
+
+#map function
+        set(map(len, strings))
+        {1, 2, 3, 4, 6}
+map can be used as an alternative to list comprehensions without any filter.
+        for x in map(remove_punctuation, states):
+                    print(x)
+                Alabama 
+                Georgia
+                Georgia
+                georgia
+                FlOrIda
+                south   carolina
+                West virginia

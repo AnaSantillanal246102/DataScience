@@ -1,0 +1,32 @@
+Files and the Operating System
+//pandas.read_csv to read data files from disk into Python data structures. 
+open()
+To open a file for reading or writing, use the built-in open function with either a relative or absolute file path and an optional file encoding
+    path = "examples/segismundo.txt"
+    f = open(path, encoding="utf-8")
+
+encoding="utf-8" as a best practice because the default Unicode encoding for reading files varies from platform to platform.
+By default, the file is opened in read-only mode "r".
+The lines come out of the file with the end-of-line (EOL) markers intact.
+
+close()
+When you use open to create file objects, it is recommended to close the file when you are finished with it. Closing the file releases its resources back to the operating system
+    In [237]: f.close()
+
+with()
+This will automatically close the file f when exiting the with block. Failing to ensure that files are closed will not cause problems in many small programs or scripts, but it can be an issue in programs that need to interact with a large number of files.
+If we had typed f = open(path, "w"), a new file at examples/segismundo.txt would have been created (be careful!), overwriting any file in its place
+
+.read()
+#readline
+.seek()
+using seek when opening files in any mode other than binary. If the file position falls in the middle of the bytes defining a Unicode character, then subsequent reads will result in an error
+.tell()
+#say the last position
+
+Bytes and Unicode with Files
+The default behavior for Python files (whether readable or writable) is text mode, which means that you intend to work with Python strings (i.e., Unicode). This contrasts with binary mode, which you can obtain by appending b to the file mode.
+
+UTF-8 is a variable-length Unicode encoding, so when I request some number of characters from the file, Python reads enough bytes (which could be as few as 10 or as many as 40 bytes) from the file to decode that many characters. If I open the file in "rb" mode instead, read requests that exact number of bytes
+
+Depending on the text encoding, you may be able to decode the bytes to a str object yourself, but only if each of the encoded Unicode characters is fully formed

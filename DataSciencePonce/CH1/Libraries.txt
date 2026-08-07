@@ -1,0 +1,49 @@
+LIBRARIES
+
+NumPy (Numerical Python)
+It provides the data structures, algorithms, and library glue needed for most scientific applications involving numerical data in Python.
+Has:
+- Functions for performing element-wise computations with arrays or mathematical operations between arrays
+- Tools for reading and writing array-based datasets to disk
+- Linear algebra operations, Fourier transform, and random number generation
+For numerical data, NumPy arrays are more efficient for storing and manipulating data than the other built-in Python data structures. Also, libraries written in a lower-level language, such as C or FORTRAN, can operate on the data stored in a NumPy array without copying data into some other memory representation. Thus, many numerical computing tools for Python either assume NumPy arrays as a primary data structure or else target interoperability with NumPy.
+
+Pandas (Panel data) (2010)
+Provides high-level data structures and functions designed to make working with structured or tabular data intuitive and flexible. The primary objects in pandas that will be used in this book are the DataFrame, a tabular, column-oriented data structure with both row and column labels, and the Series, a one-dimensional labeled array object. pandas blends the array-computing ideas of NumPy with the kinds of data manipulation capabilities found in spreadsheets and relational databases (such as SQL). It provides convenient indexing functionality to enable you to reshape, slice and dice, perform aggregations, and select subsets of data.
+- Data structures with labeled axes supporting automatic or explicit data alignment—this prevents common errors resulting from misaligned data and working with differently indexed data coming from different sources
+- Integrated time series functionality
+- Arithmetic operations and reductions that preserve metadata
+- Merge and other relational operations found in popular databases (SQL-based, for example)
+
+
+Matplotlib
+It is the most popular Python library for producing plots and other two-dimensional data visualizations. It is designed for creating plots suitable for publication. While there are other visualization libraries available to Python programmers, matplotlib is still widely used and integrates reasonably well with the rest of the ecosystem. 
+
+IPython
+IPython is designed for both interactive computing and software development work. It encourages an execute-explore workflow instead of the typical edit-compile-run workflow of many other programming languages. It also provides integrated access to your operating system’s shell and filesystem; this reduces the need to switch between a terminal window and a Python session in many cases. Since much of data analysis coding involves exploration, trial and error.
+You can also use the IPython system through the Jupyter notebook.
+
+Jupyter Notebook
+The Jupyter notebook system also allows you to author content in Markdown and HTML, providing you a means to create rich documents with code and text.
+
+SciPy
+It is a collection of packages addressing a number of foundational problems in scientific computing.
+
+Scikit-learn 
+It has become the premier general-purpose machine learning toolkit for Python programmers
+Classification: SVM, nearest neighbors, random forest, logistic regression, etc.
+- Regression: Lasso, ridge regression, etc.
+- Clustering: k-means, spectral clustering, etc.
+- Dimensionality reduction: PCA, feature selection, matrix factorization, etc.
+- Model selection: Grid search, cross-validation, metrics
+- Preprocessing: Feature extraction, normalization
+
+Statsmodels 
+It is a statistical analysis package that was seeded by work from Stanford University statistics professor Jonathan Taylor, who implemented a number of regression analysis models popular in the R programming language. 
+Compared with scikit-learn, statsmodels contains algorithms for classical (primarily frequentist) statistics and econometrics.
+- Regression models: linear regression, generalized linear models, robust linear models, linear mixed effects models, etc.
+- Analysis of variance (ANOVA)
+- Time series analysis: AR, ARMA, ARIMA, VAR, and other models
+- Nonparametric methods: Kernel density estimation, kernel regression
+- Visualization of statistical model results
+statsmodels is more focused on statistical inference, providing uncertainty estimates and p-values for parameters. scikit-learn, by contrast, is more prediction focused.
